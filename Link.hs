@@ -1,6 +1,7 @@
 module Link ( Link, newL, linksL, connectsL, capacityL, delayL )
    where
 
+import Point
 import City 
 import Quality
 
