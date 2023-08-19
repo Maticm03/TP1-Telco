@@ -11,13 +11,18 @@ data Region = Reg [City] [Link] [Tunel]
 
 
 newR :: Region
-
+newR ciudad link tunel = Reg ciudad link tunel
 
 foundR :: Region -> City -> Region -- agrega una nueva ciudad a la región
+foundR (Reg cities links tunnels) newCity = Reg (newCity : cities) links tunnels
+ 
 
-
-linkR :: Region -> City -> City -> Quality -> Region -- enlaza dos ciudades de la región con un enlace de la calidad indicada
-
+-- enlaza dos ciudades de la región con un enlace de la calidad indicada
+linkR :: Region -> City -> City -> Quality -> Region
+linkR (Reg cities links tunnels) city1 city2 quality =
+    let newLink = newL city1 city2 quality
+        newLinks = newLink : links
+    in Reg cities newLinks tunnels
 
 tunelR :: Region -> [ City ] -> Region -- genera una comunicación entre dos ciudades distintas de la región
 
