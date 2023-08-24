@@ -1,4 +1,4 @@
-module Tunel ( Tunel, newT, usesT, delayT)--, connectsT)
+module Tunel ( Tunel, newT, usesT, delayT, connectsT)
    where
 
 import Point
@@ -11,15 +11,18 @@ data Tunel = Tun [Link] deriving (Eq, Show)
 newT :: [Link] -> Tunel
 newT enlaces = Tun enlaces
 
---connectsL :: City -> Link -> Bool   -- indica si esta ciudad es parte de este link
---connectsL ciudad (Lin ciudad1 ciudad2 _) = ciudad == ciudad1 || ciudad == ciudad2
+connectsT :: City -> City -> Tunel -> Bool
+connectsT ciudadA ciudadB (Tunel enlaces) =
+    case enlaces of
+        [] -> False
+        [enlace] -> isExtremo ciudadA enlace || isExtremo ciudadB enlace
+        _ -> let primerEnlace = head enlaces
+                 ultimoEnlace = last enlaces
+             in (isExtremo ciudadA primerEnlace || isExtremo ciudadB primerEnlace)
+                && (isExtremo ciudadA ultimoEnlace || isExtremo ciudadB ultimoEnlace)
 
---connectsT :: City -> City -> Tunel -> Bool  -- indica si este tunel conecta estas dos ciudades distintas
---connectsT ciudad1 ciudad2 (Tun enlaces) =
-
---Usar funciones de Link no el constructor Lin.
---Tunel tiene una lista de varios links, si conecta dos ciudades distintas solo importan las ciudades de las puntas.
---Cuando se crea el tunel hay que verificar que anda. Ej: a->b,b->c,c->d.
+isExtremo :: City -> (City, City, Quality) -> Bool
+isExtremo ciudad (ciudad1, ciudad2, _) = ciudad == ciudad1 || ciudad == ciudad2
 
 usesT :: Link -> Tunel -> Bool -- indica si este tunel atraviesa ese link
 usesT enlace (Tun enlaces) = enlace `elem` enlaces
