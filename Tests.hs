@@ -24,22 +24,23 @@ tunel2 = newT [link3, link1, link2]
 tunel3 = newT [link1]
 tunel4 = newT []
 
-regionInicial = newR
-
 test = [capacityQ calidad1 == 4,                    --TRUE
         delayQ calidad1 == 3.0,                     --TRUE
         difP (newP 1 1) (newP 2 2) == 1.4142135,    --TRUE
         nameC bue == "Buenos Aires",                --TRUE
         distanceC bue par == 1.4142135,             --TRUE
-        connectsL lon link1 == True, --TRUE
-        connectsL bue link1 == True,   --FALSE
-        linksL bue par link2 == True, ---FALSE
-        capacityL link1 == 3, --TRUE
-        delayL link1 == 2.0, --TRUE
-        usesT link1 tunel1 == True, --TRUE
-        delayT tunel1 == 5.0, --FALSE
-        connectsT rom tok tunel1 == True, --TRUE
-        connectsT rom bue tunel1 == False, --TRUE
-        connectsT rom bue tunel4 == False, --TRUE
-        connectsT rom lon tunel3 == True] --TRUE
-        --tunelR regionInicial [rom, lon, tok] == 
+        connectsL lon link1 == True,                --TRUE
+        connectsL bue link1 == True,                --FALSE
+        linksL bue par link2 == True,               --FALSE
+        capacityL link1 == 3,                       --TRUE
+        delayL link1 == 2.0,                        --TRUE
+        usesT link1 tunel1 == True,                 --TRUE
+        delayT tunel1 == 5.0,                       --FALSE
+        connectsT rom tok tunel1 == True,           --TRUE
+        connectsT rom bue tunel1 == False,          --TRUE
+        connectsT rom bue tunel4 == False,          --TRUE
+        connectsT rom lon tunel3 == True]          --TRUE
+        --connectedR
+        --linkedR 
+        --delayR 
+        --availableCapacityForR 

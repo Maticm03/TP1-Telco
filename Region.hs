@@ -1,4 +1,4 @@
-module Region ( Region, newR, foundR, linkR, connectedR, linkedR, delayR, availableCapacityForR)-- tunelR
+module Region ( Region, newR, foundR, linkR, tunelR, connectedR, linkedR, delayR, availableCapacityForR)
    where
 
 import Point 
@@ -24,8 +24,30 @@ linkR (Reg cities links tunnels) city1 city2 quality =
     in Reg cities newLinks tunnels
 
 -- genera una comunicación entre dos ciudades distintas de la región
+defaultQuality :: Quality
+defaultQuality = newQ "Default" 1 1.0
 
+citiesInRegion :: Region -> [City]
+citiesInRegion (Reg cities _ _) = cities
 
+linksInRegion :: Region -> [Link]
+linksInRegion (Reg _ links _) = links
+
+tunnelsInRegion :: Region -> [Tunel]
+tunnelsInRegion (Reg _ _ tunnels) = tunnels
+
+tunelR :: Region -> [City] -> Region
+tunelR region cities =
+    let linkList = createLinks cities
+        newLinks = linkList ++ linksInRegion region
+        tunnel = newT linkList
+    in Reg (citiesInRegion region ++ cities) newLinks (tunnelsInRegion region ++ [tunnel])
+  where
+    createLinks :: [City] -> [Link]
+    createLinks [] = []
+    createLinks [_] = []
+    createLinks (cityA : cityB : restCities) =
+        newL cityA cityB defaultQuality : createLinks (cityB : restCities)
 
 instance Show Region where
     show (Reg cities links tunnels) =
