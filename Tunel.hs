@@ -4,7 +4,7 @@ module Tunel ( Tunel, newT, usesT, delayT, connectsT)
 import Point
 import City  
 import Quality
-import Link
+import Link 
 
 data Tunel = Tun [Link] deriving (Eq, Show)
 
@@ -12,17 +12,11 @@ newT :: [Link] -> Tunel
 newT enlaces = Tun enlaces
 
 connectsT :: City -> City -> Tunel -> Bool
-connectsT ciudadA ciudadB (Tunel enlaces) =
+connectsT cityA cityB (Tun enlaces) =
     case enlaces of
         [] -> False
-        [enlace] -> isExtremo ciudadA enlace || isExtremo ciudadB enlace
-        _ -> let primerEnlace = head enlaces
-                 ultimoEnlace = last enlaces
-             in (isExtremo ciudadA primerEnlace || isExtremo ciudadB primerEnlace)
-                && (isExtremo ciudadA ultimoEnlace || isExtremo ciudadB ultimoEnlace)
-
-isExtremo :: City -> (City, City, Quality) -> Bool
-isExtremo ciudad (ciudad1, ciudad2, _) = ciudad == ciudad1 || ciudad == ciudad2
+        [enlace] -> connectsL cityA enlace && connectsL cityB enlace
+        firstEnlace : _ -> connectsL cityA firstEnlace && connectsL cityB (last enlaces)
 
 usesT :: Link -> Tunel -> Bool -- indica si este tunel atraviesa ese link
 usesT enlace (Tun enlaces) = enlace `elem` enlaces

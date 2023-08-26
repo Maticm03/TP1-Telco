@@ -1,4 +1,4 @@
-module Region ( Region, newR, foundR, linkR, tunelR, connectedR, linkedR, delayR, availableCapacityForR)
+module Region ( Region, newR, foundR, linkR, connectedR, linkedR, delayR, availableCapacityForR)-- tunelR
    where
 
 import Point 
@@ -7,14 +7,14 @@ import Quality
 import Link 
 import Tunel 
 
+
 data Region = Reg [City] [Link] [Tunel]
 
 newR :: Region
-newR ciudad link tunel = Reg ciudad link tunel
+newR = Reg [] [] []
 
 foundR :: Region -> City -> Region -- agrega una nueva ciudad a la región
 foundR (Reg cities links tunnels) newCity = Reg (newCity : cities) links tunnels
- 
 
 -- enlaza dos ciudades de la región con un enlace de la calidad indicada
 linkR :: Region -> City -> City -> Quality -> Region
@@ -24,19 +24,19 @@ linkR (Reg cities links tunnels) city1 city2 quality =
     in Reg cities newLinks tunnels
 
 -- genera una comunicación entre dos ciudades distintas de la región
-tunelR :: Region -> [City] -> Region
-tunelR region@(Reg cities links tunnels) [ciudadA, ciudadB]
-    | ciudadA /= ciudadB && ciudadA `elem` cities && ciudadB `elem` cities =
-        let newTunnel = newT [newL ciudadA ciudadB]
-           newTunnels = newTunnel : tunnels
-       in Reg cities links newTunnels
-    | otherwise = region
-tunelR region _ = region
+
+
+
+instance Show Region where
+    show (Reg cities links tunnels) =
+        "Cities: " ++ show cities ++ "\n" ++
+        "Links: " ++ show links ++ "\n" ++
+        "Tunnels: " ++ show tunnels
 
 -- indica si estas dos ciudades estan conectadas por un tunel
 connectedR :: Region -> City -> City -> Bool
-connectedR (Reg _ _ tunnels) ciudadA ciudadB =
-    any (connectsT ciudadA ciudadB) tunnels
+connectedR (Reg _ _ tunnels) cityA cityB =
+    any (\tunnel -> connectsT cityA cityB tunnel) tunnels
 
 -- indica si estas dos ciudades estan enlazadas
 linkedR :: Region -> City -> City -> Bool
@@ -45,17 +45,15 @@ linkedR (Reg _ links _) ciudadA ciudadB =
 
 -- dadas dos ciudades conectadas, indica la demora
 delayR :: Region -> City -> City -> Float
-delayR (Reg _ links tunnels) ciudadA ciudadB =
-    case findTunnelWithLinks tunnels of
-        Just tunnelLinks -> calculateTotalDelay tunnelLinks
+delayR (Reg _ _ tunnels) cityA cityB =
+    case findTunnel tunnels of
+        Just tunnel -> delayT tunnel
         Nothing -> 0.0
   where
-    findTunnelWithLinks (tunnelLinks : rest)
-        | connectsT ciudadA ciudadB tunnelLinks = Just tunnelLinks
-        | otherwise = findTunnelWithLinks rest
-    findTunnelWithLinks [] = Nothing
-
-    calculateTotalDelay enlaces = sum (map delayL enlaces)
+    findTunnel (tunnel : rest)
+        | connectsT cityA cityB tunnel || connectsT cityB cityA tunnel = Just tunnel
+        | otherwise = findTunnel rest
+    findTunnel [] = Nothing
 
 -- indica la capacidad disponible entre dos ciudades
 availableCapacityForR :: Region -> City -> City -> Int
