@@ -49,12 +49,6 @@ tunelR region cities =
     createLinks (cityA : cityB : restCities) =
         newL cityA cityB defaultQuality : createLinks (cityB : restCities)
 
-instance Show Region where
-    show (Reg cities links tunnels) =
-        "Cities: " ++ show cities ++ "\n" ++
-        "Links: " ++ show links ++ "\n" ++
-        "Tunnels: " ++ show tunnels
-
 -- indica si estas dos ciudades estan conectadas por un tunel
 connectedR :: Region -> City -> City -> Bool
 connectedR (Reg _ _ tunnels) cityA cityB =
