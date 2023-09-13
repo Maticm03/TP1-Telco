@@ -1,43 +1,39 @@
 package queue;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class Queue {
-  private LinkedList<Object> queue = new LinkedList<>();
+  private List <QueueElement> elements = new LinkedList<>();
   
-  	public boolean isEmpty() {
-	  return queue.isEmpty();
+  public Queue () {
+	  elements.add(new EmptyQueueElement())
+  }
+  public boolean isEmpty() {
+		return elements.size() == 1;
 	}
-  	
-//en isEmpty decía que tenía que devolver True.
-  	
-	public Queue add( Object  cargo ) {
-	  queue.add(cargo);
+
+	public Queue add( QueueElement element ) {
+		elements.add(elements.size() - 1 , element); 
+		// Agrega el elemento antes que el elemento vacio (o sea el vacio esta siempre al final).
 		return this;
 	}
 
-	public Object take() {
-	    if (isEmpty()) {
-	        throw new Error("Queue is empty");
-	    }
-	    
-	    Object removedItem = queue.removeFirst(); // Elimina y almacena el elemento del frente de la cola
-	    return removedItem; // Devuelve el elemento eliminado
+	public QueueElement take() {
+	// Deberia fijarse de que clase es el primer elemento de la lista y en base a eso ir al método de la clase que corresponde para devolve el valor o mensaje correcto
+	// elements.get(1) no se si va a la clase
+		return null;
 	}
 
-//take devolvía null.
-	
-	public Object head() {
-	    if (isEmpty()) {
-	        throw new Error("Queue is empty");
-	    }
-	    
-	    return queue.getFirst();
+	public QueueElement head() {
+		// Mismo que take
+		// elements.get(1)
+		return null;
 	}
-	
+
 	public int size() {
-	    return queue.size(); // Devuelve el tamaño de la cola
+		// Creo que no depende de la clase del elemento pero el ultimo que es el vacio no lo tiene que contar.
+		return elements.size() - 1;
 	}
-
 
 }
