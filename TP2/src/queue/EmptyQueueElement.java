@@ -1,5 +1,10 @@
 
 public class EmptyQueueElement extends QueueElement{
+
+	public String getValue(){
+		return "";
+	}
+	
 	public boolean isEmpty() {
 		return true;
 	}
