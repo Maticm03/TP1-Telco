@@ -7,7 +7,7 @@ public class ValidQueueElement extends QueueElement{
         	this.value = value;
 	}
 
-	public getValue() {
+	public String getValue() {
 		return value;
 		
 	public boolean isEmpty() {
