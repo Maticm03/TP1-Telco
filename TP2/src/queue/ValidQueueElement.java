@@ -1,5 +1,15 @@
 
 public class ValidQueueElement extends QueueElement{
+
+	private String value;
+
+	public ValidQueueElement(String value) {
+        	this.value = value;
+	}
+
+	public getValue() {
+		return value;
+		
 	public boolean isEmpty() {
 		return false
 	}
