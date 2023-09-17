@@ -2,9 +2,10 @@ package queue;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 public class QueueTest {
 
@@ -72,33 +73,48 @@ public class QueueTest {
 
   @Test public void test10CanNotTakeWhenThereAreNoObjectsInTheQueue() {
     Queue queue = new Queue();
-    try {
-      queue.take();
-      fail( "Expected Error was not thrown." );
-    } catch (Error e) {
-      assertTrue( e.getMessage().equals( "Queue is empty" ) );
-    }
+    assertThrowsLike( () -> queue.take(),EmptyQueueElement.QueueIsEmpty);
+    
+    
+//    try {
+//      queue.take();
+//      fail( "Expected Error was not thrown." );
+//    } catch (Error e) {
+//      assertTrue( e.getMessage().equals( "Queue is empty" ) );
+//    }
   }
 
-  @Test public void test11CanNotTakeWhenThereAreNoObjectsInTheQueueAndTheQueueHadObjects() {
+
+private void assertThrowsLike(Executable executable, String message) {
+	assertEquals( message,
+            assertThrows( RuntimeException.class, executable ).getMessage() );
+	
+}
+
+@Test public void test11CanNotTakeWhenThereAreNoObjectsInTheQueueAndTheQueueHadObjects() {
     Queue queue = new Queue();
     queue.add( "Something" );
     queue.take();
-    try {
-      queue.take();
-      fail( "Expected Error was not thrown." );
-    } catch (Error e) {
-      assertTrue( e.getMessage().equals( "Queue is empty" ) );
-    }
+    assertThrowsLike( () -> queue.take(),EmptyQueueElement.QueueIsEmpty);
+    
+//    queue.add( "Something" );
+//    queue.take();
+//    try {
+//      queue.take();
+//      fail( "Expected Error was not thrown." );
+//    } catch (Error e) {
+//      assertTrue( e.getMessage().equals( "Queue is empty" ) );
+//    }
   }
 
   @Test public void test12CanNotHeadWhenThereAreNoObjectsInTheQueue() {
     Queue queue = new Queue();
-    try {
-      queue.head();
-      fail( "Expected Error was not thrown." );
-    } catch (Error e) {
-      assertTrue( e.getMessage().equals( "Queue is empty" ) );
-    }
-  }
+    assertThrowsLike( () -> queue.head(),EmptyQueueElement.QueueIsEmpty);
+//    try {
+//      queue.head();
+//      fail( "Expected Error was not thrown." );
+//    } catch (Error e) {
+//      assertTrue( e.getMessage().equals( "Queue is empty" ) );
+//    }
+   }
 }
