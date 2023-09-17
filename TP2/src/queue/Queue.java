@@ -1,38 +1,36 @@
 package queue;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Queue {
-  private List <QueueElement> elements = new LinkedList<>();
+  private List <QueueElement> elements = new ArrayList<>();
+  private QueueElement headElement = new EmptyQueueElement();
   
   public Queue () {
-	  elements.add(new EmptyQueueElement())
+	  elements.add(headElement);
   }
+  
   public boolean isEmpty() {
 		return elements.size() == 1;
 	}
 
-	public Queue add( QueueElement element ) {
-		elements.add(elements.size() - 1 , element); 
-		// Agrega el elemento antes que el elemento vacio (o sea el vacio esta siempre al final).
+	public Queue add( String value ) {
+		QueueElement element = new ValidQueueElement(value);
+		elements.add(1, element); 
 		return this;
 	}
 
-	public QueueElement take() {
-	// Deberia fijarse de que clase es el primer elemento de la lista y en base a eso ir al método de la clase que corresponde para devolve el valor o mensaje correcto
-	// elements.get(1) no se si va a la clase
-		return null;
+	public Object take() {
+		QueueElement removedElement = elements.remove(elements.size()-1);
+		return removedElement.take();
 	}
 
-	public QueueElement head() {
-		// Mismo que take
-		// elements.get(1)
-		return null;
+	public Object head() {
+		return elements.get(elements.size()-1).head();
 	}
 
 	public int size() {
-		// Creo que no depende de la clase del elemento pero el ultimo que es el vacio no lo tiene que contar.
 		return elements.size() - 1;
 	}
 
