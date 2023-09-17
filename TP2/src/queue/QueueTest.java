@@ -62,14 +62,6 @@ public class QueueTest {
   @Test public void test10CanNotTakeWhenThereAreNoObjectsInTheQueue() {
     Queue queue = new Queue();
     assertThrowsLike( () -> queue.take(),EmptyQueueElement.QueueIsEmpty);
-    
-    
-//    try {
-//      queue.take();
-//      fail( "Expected Error was not thrown." );
-//    } catch (Error e) {
-//      assertTrue( e.getMessage().equals( "Queue is empty" ) );
-//    }
   }
 
 
@@ -83,26 +75,11 @@ private void assertThrowsLike(Executable executable, String message) {
     Queue queue = queueAddsSomething();
     queue.take();
     assertThrowsLike( () -> queue.take(),EmptyQueueElement.QueueIsEmpty);
-    
-//    queue.add( "Something" );
-//    queue.take();
-//    try {
-//      queue.take();
-//      fail( "Expected Error was not thrown." );
-//    } catch (Error e) {
-//      assertTrue( e.getMessage().equals( "Queue is empty" ) );
-//    }
   }
 
   @Test public void test12CanNotHeadWhenThereAreNoObjectsInTheQueue() {
     Queue queue = new Queue();
     assertThrowsLike( () -> queue.head(),EmptyQueueElement.QueueIsEmpty);
-//    try {
-//      queue.head();
-//      fail( "Expected Error was not thrown." );
-//    } catch (Error e) {
-//      assertTrue( e.getMessage().equals( "Queue is empty" ) );
-//    }
    }
   
   private Queue queueAddsSomething() {
