@@ -1,27 +1,19 @@
+package queue;
 
 public class ValidQueueElement extends QueueElement{
+	
+	private Object value;
 
-	private String value;
-
-	public ValidQueueElement(String value) {
+	public ValidQueueElement(Object value) {
         	this.value = value;
-	}
-
-	public String getValue() {
-		return value;
-		
-	public boolean isEmpty() {
-		return false
 	}
 	
 	public Object take() {
-		Object removedItem = queue.removeFirst();
-		return removedItem;
+		return value;
 	}
 	
 	public Object head() {
-		Object firstItem = queue.getFirst();
-		return firstItem;
+		return value;
 	}
 	
 }
