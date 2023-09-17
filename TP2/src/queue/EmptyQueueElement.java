@@ -1,20 +1,12 @@
+package queue;
 
 public class EmptyQueueElement extends QueueElement{
+	
+	public Object take() {
+		throw new Error ("Queue is empty");
+	}
 
-	public String getValue(){
-		return "";
+	public Object head() {
+		throw new Error ("Queue is empty");
 	}
-	
-	public boolean isEmpty() {
-		return true;
-	}
-	
-	public QueueElement take() {
-		throw new IllegalStateException("Queue is empty");
-	}
-	
-	public QueueElement head() {
-		throw new IllegalStateException("Queue is empty");
-	}
-	
 }
