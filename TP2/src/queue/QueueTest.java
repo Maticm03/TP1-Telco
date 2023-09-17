@@ -22,46 +22,34 @@ public class QueueTest {
   }
 
   @Test public void test04TakeRemovesElementsFromTheQueue() {
-    Queue queue = new Queue().add( "Something" );
+    Queue queue = queueAddsSomething();
     queue.take();
     
     assertTrue( queue.isEmpty() );
   }
 
   @Test public void test05TakeReturnsLastAddedObject() {
-    Queue queue = new Queue();
-    String addedObject = "Something";
-    queue.add( addedObject );
+    Queue queue = queueAddsSomething();
     
-    assertEquals( addedObject, queue.take() );
+    assertEquals( "Something", queue.take() );
   }
 
   @Test public void test06QueueBehavesFIFO() {
-    Queue queue = new Queue();
-    String firstAddedObject = "First";
-    String secondAddedObject = "Second";
+    Queue queue = queueAddsFirstAndSecondObject();
 
-    queue.add( firstAddedObject );
-    queue.add( secondAddedObject );
-
-    assertEquals( queue.take(), firstAddedObject );
-    assertEquals( queue.take(), secondAddedObject );
+    assertEquals( queue.take(), "First" );
+    assertEquals( queue.take(), "Second" );
     assertTrue( queue.isEmpty() );
   }
 
   @Test public void test07HeadReturnsFirstAddedObject() {
-    Queue queue = new Queue();
-    String firstAddedObject = "First";
+    Queue queue = queueAddsFirstAndSecondObject();
 
-    queue.add( firstAddedObject );
-    queue.add( "Second" );
-
-    assertEquals( queue.head(), firstAddedObject );
+    assertEquals( queue.head(), "First" );
   }
 
   @Test public void test08HeadDoesNotRemoveObjectFromQueue() {
-    Queue queue = new Queue();
-    queue.add( "Something" );
+    Queue queue = queueAddsSomething();
     assertEquals( 1, queue.size() );
     queue.head();
     assertEquals( 1, queue.size() );
@@ -92,8 +80,7 @@ private void assertThrowsLike(Executable executable, String message) {
 }
 
 @Test public void test11CanNotTakeWhenThereAreNoObjectsInTheQueueAndTheQueueHadObjects() {
-    Queue queue = new Queue();
-    queue.add( "Something" );
+    Queue queue = queueAddsSomething();
     queue.take();
     assertThrowsLike( () -> queue.take(),EmptyQueueElement.QueueIsEmpty);
     
@@ -117,4 +104,17 @@ private void assertThrowsLike(Executable executable, String message) {
 //      assertTrue( e.getMessage().equals( "Queue is empty" ) );
 //    }
    }
+  
+  private Queue queueAddsSomething() {
+		Queue queue = new Queue();
+	    queue.add( "Something" );
+		return queue;
+	}
+  
+  private Queue queueAddsFirstAndSecondObject() {
+		Queue queue = new Queue();
+	    queue.add( "First" );
+	    queue.add( "Second" );
+		return queue;
+	}
 }
