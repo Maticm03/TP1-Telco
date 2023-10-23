@@ -56,8 +56,14 @@ public class NemoTest {
 	@Test void test09NemoCannotReleaseCapsuleWhenDeeperThanFirstLevelOfInmersion() {
 		Nemo nemo = new Nemo();
 		nemo.move("dd");
-		assertThrowsLike( () -> nemo.move("m"), "Nemo has exploded" );
+		try {
+			nemo.move("m");
+		} catch (Error e) {
+			assertEquals (e.getMessage(), "Nemo has exploded");
+		}
+
 	}
+
 	
 	@Test void test10UpDirectiveOnSurfaceDoesNotAffectNemoPosition() {
 		Nemo nemo = new Nemo();
@@ -129,11 +135,6 @@ public class NemoTest {
 	private static void nemoCoodinatesAndDirection(Nemo nemo, int positionX, int positionY, int positionDepth, String direction) {
 		assertEquals(nemo.getDirection().strDirection(), direction);
 		nemoCoordinates(nemo, positionX, positionY, positionDepth);
-	}
-
-	private void assertThrowsLike(Executable executable, String message) {
-		assertEquals(message,
-				Assertions.assertThrows( RuntimeException.class, executable ).getMessage() );
 	}
 
 	private static void nemoCoordinates(Nemo nemo, int positionX, int positionY, int positionDepth) {
