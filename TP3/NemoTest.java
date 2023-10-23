@@ -9,11 +9,6 @@ public class NemoTest {
 	@Test void test01NewNemoPosition () {
 		Nemo nemo = new Nemo();
 		nemoCoordinates(nemo, 0, 0, 0);
-
-
-//		assertEquals(0,nemo.getPositionX());
-//		assertEquals(0,nemo.getPositionY());
-//		assertEquals(0,nemo.getDepth());
 	}
 
 	@Test void test02NemoCanMoveForward() {
@@ -62,12 +57,6 @@ public class NemoTest {
 		Nemo nemo = new Nemo();
 		nemo.move("dd");
 		assertThrowsLike( () -> nemo.move("m"), "Nemo has exploded" );
-//		try {
-//			nemo.move("m");
-//				} catch (Error e) {
-//			assertEquals (e.getMessage(), "Nemo has exploded");
-//		}
-		
 	}
 	
 	@Test void test10UpDirectiveOnSurfaceDoesNotAffectNemoPosition() {
