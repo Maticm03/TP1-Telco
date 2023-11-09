@@ -4,10 +4,11 @@ package linea;
 import java.util.Arrays;
 
 public class Linea {
-    private char[][] board;
-    private char winVariant;
-    private boolean redTurn;
-    private boolean gameFinished;
+    public char[][] board;
+    public char winVariant;
+    private WinStrategy winStrategy;
+    public boolean redTurn;
+    public boolean gameFinished;
     
     public Linea(int base, int altura, char winVariant) {
         board = new char[altura][base];
@@ -15,12 +16,32 @@ public class Linea {
         redTurn = true;
         gameFinished = false;
         initializeBoard();
+        initializeWinStrategy(winVariant);
     }
 
     private void initializeBoard() {
         Arrays.stream(board).forEach(row -> Arrays.fill(row, ' '));
     }
 
+    public char[][] getBoard() {
+        char[][] copyBoard = new char[board.length][board[0].length];
+        for (int i = 0; i < board.length; i++) {
+            copyBoard[i] = Arrays.copyOf(board[i], board[i].length);
+        }
+        return copyBoard;
+    }
+
+    private void initializeWinStrategy(char winVariant) {
+        if (winVariant == 'A') {
+            winStrategy = new StrategyA();
+        } else if (winVariant == 'B') {
+            winStrategy = new StrategyB();
+        } else if (winVariant == 'C') {
+            winStrategy = new StrategyC();
+        } else {
+            throw new IllegalArgumentException("Estrategia de juego no válida");
+        }
+    }
 
     public String show() {
         StringBuilder result = new StringBuilder();
@@ -67,103 +88,10 @@ public class Linea {
     }
 
     private void checkForWin(int row, int column, char player) {
-        if (winVariant == 'C') {
-            if (checkHorizontalWin(row, player) || checkVerticalWin(column, player) || checkDiagonalWin(player)) {
-                gameFinished = true;
-                System.out.println(player + " gana!");
-            }
-        } else if (winVariant == 'A') {
-            if (checkHorizontalWin(row, player) || checkVerticalWin(column, player)) {
-                gameFinished = true;
-                System.out.println(player + " gana!");
-            }
-        } else if (winVariant == 'B') {
-            if (checkDiagonalWin(player)) {
-                gameFinished = true;
-                System.out.println(player + " gana!");
-            }
+        if (winStrategy.checkWin(this, row, column, player)) {
+            gameFinished = true;
+            System.out.println(player + " gana!");
         }
-    }
-
-    private boolean checkHorizontalWin(int row, char player) {
-        int count = 0;
-        for (int col = 0; col < board[row].length; col++) {
-            if (board[row][col] == player) {
-                count++;
-                if (count == 4) {
-                    return true;
-                }
-            } else {
-                count = 0;
-            }
-        }
-        return false;
-    }
-
-    private boolean checkVerticalWin(int column, char player) {
-        int count = 0;
-        for (int row = 0; row < board.length; row++) {
-            if (board[row][column] == player) {
-                count++;
-                if (count == 4) {
-                    return true;
-                }
-            } else {
-                count = 0;
-            }
-        }
-        return false;
-    }
-
-    private boolean checkDiagonalWin(char player) {
-        for (int row = 0; row < board.length; row++) {
-            for (int col = 0; col < board[row].length; col++) {
-                if (board[row][col] == player) {
-                    if (checkDiagonalUpWin(row, col, player) || checkDiagonalDownWin(row, col, player)) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-    private boolean checkDiagonalUpWin(int row, int col, char player) {
-        int count = 1;
-        int r = row - 1;
-        int c = col + 1;
-        while (r >= 0 && c < board[0].length) {
-            if (board[r][c] == player) {
-                count++;
-                if (count == 4) {
-                    return true;
-                }
-            } else {
-                break;
-            }
-            r--;
-            c++;
-        }
-        return false;
-    }
-
-    private boolean checkDiagonalDownWin(int row, int col, char player) {
-        int count = 1;
-        int r = row + 1;
-        int c = col + 1;
-        while (r < board.length && c < board[0].length) {
-            if (board[r][c] == player) {
-                count++;
-                if (count == 4) {
-                    return true;
-                }
-            } else {
-                break;
-            }
-            r++;
-            c++;
-        }
-        return false;
     }
 
     private void checkForDraw() {
