@@ -69,6 +69,44 @@ package linea;
 	        assertTrue(game.finished());
 	    }
 
+		@Test
+		public void testDiagonalAscendenteWin() {
+			game.playRedAt(0); // Rojo en columna 0
+			game.playBlueAt(0); // Azul en columna 0
+			game.playRedAt(1); // Rojo en columna 1
+			game.playBlueAt(1); // Azul en columna 1
+			game.playRedAt(2); // Rojo en columna 2
+			game.playBlueAt(2); // Azul en columna 2
+			game.playRedAt(3); // Rojo en columna 3 (diagonal ascendente)
+			game.playBlueAt(3); // Azul en columna 3
+			game.playRedAt(4); // Rojo en columna 4
+			game.playBlueAt(4); // Azul en columna 4
+			game.playRedAt(5); // Rojo en columna 5
+			game.playBlueAt(5); // Azul en columna 5
+			game.playRedAt(6); // Rojo en columna 6
+			game.playBlueAt(6); // Azul en columna 6
+			assertTrue(game.finished());
+		}
+
+		@Test
+		public void testDiagonalDescendenteWin() {
+
+			game.playRedAt(0); // Rojo en columna 0
+			game.playBlueAt(0); // Azul en columna 0
+			game.playRedAt(1); // Rojo en columna 1
+			game.playBlueAt(1); // Azul en columna 1
+			game.playRedAt(2); // Rojo en columna 2
+			game.playBlueAt(2); // Azul en columna 2
+			game.playRedAt(3); // Rojo en columna 3 (diagonal descendente)
+			game.playBlueAt(3); // Azul en columna 3
+			game.playRedAt(4); // Rojo en columna 4
+			game.playBlueAt(4); // Azul en columna 4
+			game.playRedAt(5); // Rojo en columna 5
+			game.playBlueAt(5); // Azul en columna 5
+			game.playRedAt(6); // Rojo en columna 6
+			assertTrue(game.finished());
+		}
+
 //	    @Test
 //	    public void testDiagonalUpLeftToRightWin() {
 //	    	game.playRedAt(0);
