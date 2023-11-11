@@ -225,5 +225,31 @@ public class LineTest {
         gameA.playBlueAt(3);
         assertTrue(gameA.finished());
     }
+
+    @Test
+    public void testRedCantPlayTwoTimesInARow() {
+        gameC.playRedAt(0);
+        assertFalse(gameC.playRedAt(0));
+    }
+
+    @Test
+    public void testBlueCantPlayTwoTimesInARow() {
+        gameC.playRedAt(0);
+        gameC.playBlueAt(0);
+        assertFalse(gameC.playBlueAt(0));
+    }
+
+    @Test
+    public void testCantKeepPlayingAfterGameFinished() {
+        gameA.playRedAt(0);
+        gameA.playBlueAt(1);
+        gameA.playRedAt(0);
+        gameA.playBlueAt(2);
+        gameA.playRedAt(0);
+        gameA.playBlueAt(3);
+        gameA.playRedAt(0);
+        assertTrue(gameA.finished());
+        assertFalse(gameA.playBlueAt(0));
+    }
 }
 

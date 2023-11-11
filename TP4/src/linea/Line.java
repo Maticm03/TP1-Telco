@@ -11,6 +11,8 @@ public class Line {
     private int height;
     private WinStrategy winStrategy;
 
+    private char lastPlayer = ' ';
+
     public Line(int base, int height, char winVariant) {
         this.base = base;
         this.height = height;
@@ -28,21 +30,34 @@ public class Line {
 
 
     public boolean playRedAt(int column) {
+        if (finished()) {
+            return false; // No se permite jugar cuando el juego ha terminado
+        }
+
         return playAt(column, 'R');
     }
 
     public boolean playBlueAt(int column) {
+        if (finished()) {
+            return false; // No se permite jugar cuando el juego terminó
+        }
+
         return playAt(column, 'B');
     }
 
-    private boolean playAt(int column, char player) {
+    public boolean playAt(int column, char player) {
         if (column < 0 || column >= base || board.get(0).get(column) != ' ') {
-            return false; // Invalid move
+            return false;
+        }
+
+        if (player == lastPlayer) {
+            return false;
         }
 
         for (int i = height - 1; i >= 0; i--) {
             if (board.get(i).get(column) == ' ') {
                 board.get(i).set(column, player);
+                lastPlayer = player;
                 return true;
             }
         }
