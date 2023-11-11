@@ -1,4 +1,4 @@
-package line;
+package linea;
 
 public class BlueTurn {
 	

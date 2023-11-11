@@ -1,5 +1,7 @@
-package line;
+package linea;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,11 +86,23 @@ public class Line {
         return board;
     }
 
-	public boolean finished() {
-		return winStrategy.checkWin(this, 'R') || winStrategy.checkWin(this, 'B') || isFull();
-	}
-	
-	 private void setWinStrategy(char winVariant) {
+    public boolean finished() {
+        boolean redWins = winStrategy.checkWin(this, 'R');
+        boolean blueWins = winStrategy.checkWin(this, 'B');
+
+        if (isFull()) {
+            System.out.println("¡Es un empate!");
+        } else if (redWins) {
+            System.out.println("¡Las fichas rojas ganaron!");
+        } else if (blueWins) {
+            System.out.println("¡Las fichas azules ganaron!");
+        }
+
+        return redWins || blueWins || isFull();
+    }
+
+
+    private void setWinStrategy(char winVariant) {
 	        switch (winVariant) {
 	            case 'A':
 	                winStrategy = new StrategyA();

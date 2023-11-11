@@ -3,12 +3,11 @@ package linea;
 import java.util.Scanner;
 
 public class Game {
-
-    public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Dimensiones?");
-        Linea game = new Linea(
+        Line game = new Line(
                 promptAsInt(scanner, "Base? "),
                 promptAsInt(scanner, "Altura? "),
                 promptAsChar(scanner, "Estrategia de Juego: A, B o C? ")

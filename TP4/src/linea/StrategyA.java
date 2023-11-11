@@ -1,43 +1,26 @@
 package linea;
 
+import java.util.stream.IntStream;
+
 public class StrategyA extends WinStrategy {
-    @Override
-    public boolean checkWin(Linea board, int row, int col, char player) {
-        char[][] gameBoard = board.getBoard();
-        return checkHorizontalWin(gameBoard, row, player) || checkVerticalWin(gameBoard, col, player);
-    }
+	  public boolean checkWin(Line line, char player) {
+	        return checkHorizontal(line, player) || checkVertical(line, player);
+	    }
 
-    boolean checkHorizontalWin(char[][] gameBoard, int row, char player) {
-        int count = 0;
-        for (int col = 0; col < gameBoard[row].length; col++) {
-            if (gameBoard[row][col] == player) {
-                count++;
-                if (count == 4) {
-                    return true;
-                }
-            } else {
-                count = 0;
-            }
-        }
-        return false;
-    }
+	private boolean checkHorizontal(Line line, char player) {
+		int requiredMatches = 4;
+		return IntStream.range(0, line.getHeight())
+				.anyMatch(i -> IntStream.range(0, line.getBase() - requiredMatches + 1)
+						.anyMatch(j -> IntStream.range(0, requiredMatches)
+								.allMatch(k -> line.getBoard().get(i).get(j + k) == player)));
+	}
 
-    boolean checkVerticalWin(char[][] gameBoard, int col, char player) {
-        int count = 0;
-        for (int row = 0; row < gameBoard.length; row++) {
-            if (gameBoard[row][col] == player) {
-                count++;
-                if (count == 4) {
-                    return true;
-                }
-            } else {
-                count = 0;
-            }
-        }
-        return false;
-    }
+	private boolean checkVertical(Line line, char player) {
+		int requiredMatches = 4;
+		return IntStream.range(0, line.getHeight() - requiredMatches + 1)
+				.anyMatch(i -> IntStream.range(0, line.getBase())
+						.anyMatch(j -> IntStream.range(0, requiredMatches)
+								.allMatch(k -> line.getBoard().get(i + k).get(j) == player)));
+	}
 
-    protected boolean checkDiagonalWin(char[][] gameBoard, char player) {
-        return false;
-    }
 }

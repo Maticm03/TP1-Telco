@@ -1,36 +1,34 @@
 package linea;
 
 public class StrategyB extends WinStrategy {
-    @Override
-    public boolean checkWin(Linea board, int row, int column, char player) {
-        char[][] gameBoard = board.getBoard();
-        int rows = board.getRows(); // Asegúrate de obtener el número de filas del tablero
-        int cols = board.getCols(); // Asegúrate de obtener el número de columnas del tablero
-        return checkDiagonalWin(gameBoard, player, rows, cols);
+	
+	public boolean checkWin(Line line, char player) {
+        return checkDiagonal(line, player);
     }
 
-    boolean checkDiagonalWin(char[][] board, int currentPlayer, int rows, int cols) {
-        for (int row = 3; row < rows; row++) {
-            for (int col = 0; col <= cols - 4; col++) {
-                int countAscending = 0;
-                int countDescending = 0;
-
-                for (int i = 0; i < 4; i++) {
-                    if (board[row - i][col + i] == currentPlayer) {
-                        countAscending++;
-                    }
-                    if (board[row - i][col + i] == currentPlayer) {
-                        countDescending++;
-                    }
-                }
-
-                if (countAscending == 4 || countDescending == 4) {
-                    return true;
+    private boolean checkDiagonal(Line line, char player) {
+        for (int i = 0; i <= line.getHeight() - 4; i++) {
+            for (int j = 0; j <= line.getBase() - 4; j++) {
+                if (line.getBoard().get(i).get(j) == player &&
+                    line.getBoard().get(i).get(j) == line.getBoard().get(i + 1).get(j + 1) &&
+                    line.getBoard().get(i).get(j) == line.getBoard().get(i + 2).get(j + 2) &&
+                    line.getBoard().get(i).get(j) == line.getBoard().get(i + 3).get(j + 3)) {
+                    return true; // Found 4 in a row diagonally
                 }
             }
         }
+
+        for (int i = 0; i <= line.getHeight() - 4; i++) {
+            for (int j = 3; j < line.getBase(); j++) {
+                if (line.getBoard().get(i).get(j) == player &&
+                    line.getBoard().get(i).get(j) == line.getBoard().get(i + 1).get(j - 1) &&
+                    line.getBoard().get(i).get(j) == line.getBoard().get(i + 2).get(j - 2) &&
+                    line.getBoard().get(i).get(j) == line.getBoard().get(i + 3).get(j - 3)) {
+                    return true; // Found 4 in a row diagonally
+                }
+            }
+        }
+
         return false;
     }
-
 }
-
