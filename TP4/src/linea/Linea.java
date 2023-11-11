@@ -77,6 +77,15 @@ public class Linea {
             }
         }
     }
+    public int getRows() {
+        int rows = board.length;
+        return rows;
+    }
+
+    public int getCols() {
+        int cols = board[0].length;
+        return cols;
+    }
 
     private int findAvailableRow(int column) {
         for (int row = board.length - 1; row >= 0; row--) {

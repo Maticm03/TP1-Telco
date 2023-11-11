@@ -4,57 +4,30 @@ public class StrategyB extends WinStrategy {
     @Override
     public boolean checkWin(Linea board, int row, int column, char player) {
         char[][] gameBoard = board.getBoard();
-        return checkDiagonalWin(gameBoard, player);
+        int rows = board.getRows(); // Asegúrate de obtener el número de filas del tablero
+        int cols = board.getCols(); // Asegúrate de obtener el número de columnas del tablero
+        return checkDiagonalWin(gameBoard, player, rows, cols);
     }
 
-    static boolean checkDiagonalWin(char[][] gameBoard, char player) {
-        for (int row = 0; row < gameBoard.length; row++) {
-            for (int col = 0; col < gameBoard[row].length; col++) {
-                if (gameBoard[row][col] == player) {
-                    if (checkDiagonalUpWin(gameBoard, row, col, player) || checkDiagonalDownWin(gameBoard, row, col, player)) {
-                        return true;
+    boolean checkDiagonalWin(char[][] board, int currentPlayer, int rows, int cols) {
+        for (int row = 3; row < rows; row++) {
+            for (int col = 0; col <= cols - 4; col++) {
+                int countAscending = 0;
+                int countDescending = 0;
+
+                for (int i = 0; i < 4; i++) {
+                    if (board[row - i][col + i] == currentPlayer) {
+                        countAscending++;
+                    }
+                    if (board[row - i][col + i] == currentPlayer) {
+                        countDescending++;
                     }
                 }
-            }
-        }
-        return false;
-    }
 
-
-    private static boolean checkDiagonalUpWin(char[][] gameBoard, int row, int col, char player) {
-        int count = 1;
-        int r = row - 1;
-        int c = col + 1;
-        while (r >= 0 && c < gameBoard[0].length) {
-            if (gameBoard[r][c] == player) {
-                count++;
-                if (count == 4) {
+                if (countAscending == 4 || countDescending == 4) {
                     return true;
                 }
-            } else {
-                break;
             }
-            r--;
-            c++;
-        }
-        return false;
-    }
-
-    private static boolean checkDiagonalDownWin(char[][] gameBoard, int row, int col, char player) {
-        int count = 1;
-        int r = row + 1;
-        int c = col + 1;
-        while (r < gameBoard.length && c < gameBoard[0].length) {
-            if (gameBoard[r][c] == player) {
-                count++;
-                if (count == 4) {
-                    return true;
-                }
-            } else {
-                break;
-            }
-            r++;
-            c++;
         }
         return false;
     }
