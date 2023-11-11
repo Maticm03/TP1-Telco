@@ -6,30 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="a9b47dcd-b139-4e9b-a4ae-cfb89380d3c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlueTurn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/BlueTurn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameFinished.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/GameFinished.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/Line.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LineTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/LineTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RedTurn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/RedTurn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StrategyA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StrategyB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StrategyC.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WinStrategy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TP4/linea/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP4/linea/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TP4/linea/Linea.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TP4/linea/LineaTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TP4/linea/StrategyA.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP4/linea/StrategyA.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TP4/linea/StrategyB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP4/linea/StrategyB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TP4/linea/StrategyC.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP4/linea/StrategyC.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TP4/linea/WinStrategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP4/linea/WinStrategy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/linea/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/linea/Linea.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/linea/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/Line.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/linea/LineTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/LineTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/linea/StrategyA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/StrategyA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/linea/StrategyB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/StrategyB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/linea/StrategyC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/StrategyC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/linea/WinStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/WinStrategy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +61,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="LineTest.testBlueCannotStartTheGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LineTest.testBlueDiagonalDownWinGameB" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TP4" />
       <extension name="coverage">
         <pattern>
@@ -90,13 +71,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="linea" />
       <option name="MAIN_CLASS_NAME" value="linea.LineTest" />
-      <option name="METHOD_NAME" value="testBlueCannotStartTheGame" />
+      <option name="METHOD_NAME" value="testBlueDiagonalDownWinGameB" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LineTest.testDraw" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LineTest.testBlueDiagonalUpWinGameB" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TP4" />
       <extension name="coverage">
         <pattern>
@@ -106,13 +87,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="linea" />
       <option name="MAIN_CLASS_NAME" value="linea.LineTest" />
-      <option name="METHOD_NAME" value="testDraw" />
+      <option name="METHOD_NAME" value="testBlueDiagonalUpWinGameB" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LineTest.testInputMismatchException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LineTest.testRedHorizontalWin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TP4" />
       <extension name="coverage">
         <pattern>
@@ -122,13 +103,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="linea" />
       <option name="MAIN_CLASS_NAME" value="linea.LineTest" />
-      <option name="METHOD_NAME" value="testInputMismatchException" />
+      <option name="METHOD_NAME" value="testRedHorizontalWin" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LineTest.testInvalidMove" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LineTest.testRedHorizontalWinGameA" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TP4" />
       <extension name="coverage">
         <pattern>
@@ -138,13 +119,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="linea" />
       <option name="MAIN_CLASS_NAME" value="linea.LineTest" />
-      <option name="METHOD_NAME" value="testInvalidMove" />
+      <option name="METHOD_NAME" value="testRedHorizontalWinGameA" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LineTest.testOutOfBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LineTest.testRedVerticalWinGameA" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TP4" />
       <extension name="coverage">
         <pattern>
@@ -154,7 +135,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="linea" />
       <option name="MAIN_CLASS_NAME" value="linea.LineTest" />
-      <option name="METHOD_NAME" value="testOutOfBoard" />
+      <option name="METHOD_NAME" value="testRedVerticalWinGameA" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -162,11 +143,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.LineTest.testOutOfBoard" />
-        <item itemvalue="JUnit.LineTest.testBlueCannotStartTheGame" />
-        <item itemvalue="JUnit.LineTest.testInputMismatchException" />
-        <item itemvalue="JUnit.LineTest.testDraw" />
-        <item itemvalue="JUnit.LineTest.testInvalidMove" />
+        <item itemvalue="JUnit.LineTest.testBlueDiagonalDownWinGameB" />
+        <item itemvalue="JUnit.LineTest.testBlueDiagonalUpWinGameB" />
+        <item itemvalue="JUnit.LineTest.testRedHorizontalWinGameA" />
+        <item itemvalue="JUnit.LineTest.testRedVerticalWinGameA" />
+        <item itemvalue="JUnit.LineTest.testRedHorizontalWin" />
       </list>
     </recent_temporary>
   </component>
@@ -180,7 +161,7 @@
       <updated>1699537506208</updated>
       <workItem from="1699537507193" duration="1303000" />
       <workItem from="1699553782235" duration="3871000" />
-      <workItem from="1699558165352" duration="13794000" />
+      <workItem from="1699558165352" duration="17708000" />
     </task>
     <servers />
   </component>

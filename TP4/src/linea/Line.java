@@ -1,9 +1,9 @@
 package linea;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Line {
 	private List<List<Character>> board;
@@ -19,15 +19,13 @@ public class Line {
     }
 
     private void initializeBoard() {
-        board = new ArrayList<>();
-        for (int i = 0; i < height; i++) {
-            List<Character> row = new ArrayList<>();
-            for (int j = 0; j < base; j++) {
-                row.add(' ');
-            }
-            board.add(row);
-        }
+        board = IntStream.range(0, height)
+                        .mapToObj(i -> IntStream.range(0, base)
+                        .mapToObj(j -> ' ')
+                        .collect(Collectors.toList()))
+                        .collect(Collectors.toList());
     }
+
 
     public boolean playRedAt(int column) {
         return playAt(column, 'R');
@@ -53,15 +51,11 @@ public class Line {
     }
 
     public boolean isFull() {
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < base; j++) {
-                if (board.get(i).get(j) == ' ') {
-                    return false;
-                }
-            }
-        }
-        return true;
+        return board.stream()
+                .allMatch(row -> row.stream()
+                        .noneMatch(cell -> cell == ' '));
     }
+
 
     public String show() {
         StringBuilder result = new StringBuilder();
@@ -73,7 +67,7 @@ public class Line {
         }
         return result.toString();
     }
-    
+
     public int getHeight() {
         return height;
     }

@@ -1,4 +1,4 @@
-package line;
+package linea;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -60,13 +60,12 @@ public class LineTest {
     @Test
     public void testRedHorizontalWin() {
         gameC.playRedAt(0);
-        gameC.playBlueAt(4);
+        gameC.playBlueAt(0);
         gameC.playRedAt(1);
-        gameC.playBlueAt(5);
+        gameC.playBlueAt(1);
         gameC.playRedAt(2);
-        gameC.playBlueAt(4);
+        gameC.playBlueAt(2);
         gameC.playRedAt(3);
-        gameC.playBlueAt(5);
         assertTrue(gameC.finished());
     }
 
@@ -141,11 +140,90 @@ public class LineTest {
     
     @Test
     public void testOutOfBoard() {
-    Line smallBoard = new Line(4, 4, 'C');
-    assertFalse(smallBoard.playRedAt(5));
-    Line largeBoard = new Line(8, 6, 'C');
-    assertFalse(largeBoard.playRedAt(10));
-}
-    
+    assertFalse(gameC.playRedAt(8));
+    assertFalse(gameB.playBlueAt(6));
+    assertFalse(gameA.playRedAt(5));
+    }
+
+    @Test
+    public void testRedHorizontalWinGameA() {
+        gameA.playRedAt(0);
+        gameA.playBlueAt(0);
+        gameA.playRedAt(1);
+        gameA.playBlueAt(1);
+        gameA.playRedAt(2);
+        gameA.playBlueAt(2);
+        gameA.playRedAt(3);
+        assertTrue(gameA.finished());
+    }
+    @Test
+    public void testRedVerticalWinGameA() {
+        gameA.playRedAt(0);
+        gameA.playBlueAt(1);
+        gameA.playRedAt(0);
+        gameA.playBlueAt(2);
+        gameA.playRedAt(0);
+        gameA.playBlueAt(3);
+        gameA.playRedAt(0);
+        assertTrue(gameA.finished());
+    }
+
+    @Test
+    public void testRedDiagonalUpWinGameB() {
+        gameB.playRedAt(0);
+        gameB.playBlueAt(1);
+        gameB.playRedAt(1);
+        gameB.playBlueAt(2);
+        gameB.playRedAt(2);
+        gameB.playBlueAt(3);
+        gameB.playRedAt(2);
+        gameB.playBlueAt(3);
+        gameB.playRedAt(3);
+        gameB.playBlueAt(4);
+        gameB.playRedAt(3);
+        assertTrue(gameB.finished());
+    }
+
+    @Test
+    public void testBlueDiagonalDownWinGameB() {
+        gameB.playRedAt(0);
+        gameB.playBlueAt(0);
+        gameB.playRedAt(0);
+        gameB.playBlueAt(0);
+        gameB.playRedAt(1);
+        gameB.playBlueAt(1);
+        gameB.playRedAt(2);
+        gameB.playBlueAt(1);
+        gameB.playRedAt(4);
+        gameB.playBlueAt(2);
+        gameB.playRedAt(4);
+        gameB.playBlueAt(3);
+        assertTrue(gameB.finished());
+    }
+
+    @Test
+    public void testDrawGameA() {
+        gameA.playRedAt(0);
+        gameA.playBlueAt(1);
+        gameA.playRedAt(2);
+        gameA.playBlueAt(3);
+        gameA.playRedAt(1);
+        gameA.playBlueAt(0);
+        gameA.playRedAt(3);
+        gameA.playBlueAt(2);
+        gameA.playRedAt(0);
+        gameA.playBlueAt(1);
+        gameA.playRedAt(2);
+        gameA.playBlueAt(3);
+        gameA.playRedAt(1);;
+        gameA.playBlueAt(0);
+        gameA.playRedAt(3);
+        gameA.playBlueAt(2);
+        gameA.playRedAt(0);
+        gameA.playBlueAt(1);
+        gameA.playRedAt(2);
+        gameA.playBlueAt(3);
+        assertTrue(gameA.finished());
+    }
 }
 
