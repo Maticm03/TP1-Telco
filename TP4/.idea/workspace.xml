@@ -6,8 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="a9b47dcd-b139-4e9b-a4ae-cfb89380d3c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP4/linea/BlueTurn.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP4/linea/BlueTurn.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP4/linea/GameFinished.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP4/linea/GameFinished.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP4/linea/GameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP4/linea/GameState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP4/linea/Line.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP4/linea/Line.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP4/linea/LineTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP4/linea/LineTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP4/linea/RedTurn.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP4/linea/RedTurn.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/linea/BlueTurn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/BlueTurn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/linea/GameFinished.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/GameFinished.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/linea/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/GameState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/linea/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/Line.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/linea/LineTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/LineTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/linea/RedTurn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/RedTurn.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +67,7 @@
       <recent name="C:\Users\usuario\OneDrive\Escritorio\Paradigmas\TP_paradigmas\TP4\src\linea" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.LineTest.testCantKeepPlayingAfterGameFinished">
+  <component name="RunManager">
     <configuration name="LineTest.testBlueCantPlayTwoTimesInARow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TP4" />
       <extension name="coverage">

@@ -1,11 +1,7 @@
 package linea;
 
-public class RedTurn extends GameState{
-	
-	public boolean isFinished() {
-        return false;
-    }
-
+public class RedTurn extends GameState {
+	@Override
 	public GameState nextTurn() {
 		return new BlueTurn();
 	}

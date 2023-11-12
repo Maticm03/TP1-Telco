@@ -1,8 +1,11 @@
 package linea;
 
-public abstract class GameState {
-	
-	 public abstract boolean isFinished();
-	 public abstract GameState nextTurn();
+public class GameState {
+	public boolean isFinished() {
+		return false;
 	}
 
+	public GameState nextTurn() {
+		return this;
+	}
+}

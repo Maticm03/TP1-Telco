@@ -240,7 +240,7 @@ public class LineTest {
     }
 
     @Test
-    public void testCantKeepPlayingAfterGameFinished() {
+    public void testBlueCantKeepPlayingAfterRedWon() {
         gameA.playRedAt(0);
         gameA.playBlueAt(1);
         gameA.playRedAt(0);
@@ -250,6 +250,19 @@ public class LineTest {
         gameA.playRedAt(0);
         assertTrue(gameA.finished());
         assertFalse(gameA.playBlueAt(0));
+    }
+    @Test
+    public void testRedCantKeepPlayingAfterBlueWon() {
+        gameA.playRedAt(3);
+        gameA.playBlueAt(0);
+        gameA.playRedAt(1);
+        gameA.playBlueAt(0);
+        gameA.playRedAt(2);
+        gameA.playBlueAt(0);
+        gameA.playRedAt(3);
+        gameA.playBlueAt(0);
+        assertTrue(gameA.finished());
+        assertFalse(gameA.playRedAt(0));
     }
 }
 

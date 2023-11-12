@@ -1,4 +1,4 @@
-package line;
+package linea;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,9 +38,8 @@ public class Line {
         boolean moveSuccess = playAt(column, 'R');
         if (moveSuccess) {
             gameState = gameState.nextTurn();
-            if (gameState.isFinished()) {
-            }
         }
+
         return moveSuccess;
     }
 
@@ -52,11 +51,11 @@ public class Line {
         boolean moveSuccess = playAt(column, 'B');
         if (moveSuccess) {
             gameState = gameState.nextTurn();
-            if (gameState.isFinished()) {
-            }
         }
+
         return moveSuccess;
     }
+
 
     public boolean playAt(int column, char player) {
         if (column < 0 || column >= base || board.get(0).get(column) != ' ') {
@@ -112,6 +111,10 @@ public class Line {
         boolean redWins = winStrategy.checkWin(this, 'R');
         boolean blueWins = winStrategy.checkWin(this, 'B');
 
+        if (isFull() || redWins || blueWins) {
+            gameState = new GameFinished();
+        }
+
         if (isFull()) {
             System.out.println("¡Es un empate!");
         } else if (redWins) {
@@ -120,8 +123,9 @@ public class Line {
             System.out.println("¡Las fichas azules ganaron!");
         }
 
-        return redWins || blueWins || isFull();
+        return gameState instanceof GameFinished;
     }
+
 
 
     private void setWinStrategy(char winVariant) {

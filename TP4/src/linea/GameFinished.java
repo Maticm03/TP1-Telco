@@ -1,13 +1,8 @@
 package linea;
 
 public class GameFinished extends GameState {
-	
+	@Override
 	public boolean isFinished() {
-        return true;
-    }
-
-	public GameState nextTurn() {
-		return this;
+		return true;
 	}
-
 }
