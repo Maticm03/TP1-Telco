@@ -1,6 +1,5 @@
-package linea;
+package line;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -9,6 +8,7 @@ public class Line {
 	private List<List<Character>> board;
     private int base;
     private int height;
+    private GameState gameState;
     private WinStrategy winStrategy;
 
     private char lastPlayer = ' ';
@@ -17,6 +17,7 @@ public class Line {
         this.base = base;
         this.height = height;
         initializeBoard();
+        gameState = new RedTurn();
         setWinStrategy(winVariant);
     }
 
@@ -30,19 +31,31 @@ public class Line {
 
 
     public boolean playRedAt(int column) {
-        if (finished()) {
-            return false; // No se permite jugar cuando el juego ha terminado
+        if (gameState.isFinished()) {
+            return false;
         }
 
-        return playAt(column, 'R');
+        boolean moveSuccess = playAt(column, 'R');
+        if (moveSuccess) {
+            gameState = gameState.nextTurn();
+            if (gameState.isFinished()) {
+            }
+        }
+        return moveSuccess;
     }
 
     public boolean playBlueAt(int column) {
-        if (finished()) {
-            return false; // No se permite jugar cuando el juego terminó
+        if (gameState.isFinished()) {
+            return false;
         }
 
-        return playAt(column, 'B');
+        boolean moveSuccess = playAt(column, 'B');
+        if (moveSuccess) {
+            gameState = gameState.nextTurn();
+            if (gameState.isFinished()) {
+            }
+        }
+        return moveSuccess;
     }
 
     public boolean playAt(int column, char player) {
