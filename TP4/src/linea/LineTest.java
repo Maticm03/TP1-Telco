@@ -35,7 +35,8 @@ public class LineTest {
 	
     @Test
     public void testGameIsntFishiedWhenInicialized() {
-    assertFalse(gameC.finished();
+    assertFalse(gameC.finished());
+    }
 	    
     @Test
     public void testRedPlayAt() {
@@ -231,6 +232,88 @@ public class LineTest {
     }
 
     @Test
+    public void testDrawGameB(){
+        gameB.playRedAt(0);
+        gameB.playBlueAt(1);
+        gameB.playRedAt(2);
+        gameB.playBlueAt(3);
+        gameB.playRedAt(4);
+        gameB.playBlueAt(0);
+        gameB.playRedAt(1);
+        gameB.playBlueAt(2);
+        gameB.playRedAt(3);
+        gameB.playBlueAt(4);
+        gameB.playRedAt(0);
+        gameB.playBlueAt(1);
+        gameB.playRedAt(2);
+        gameB.playBlueAt(3);
+        gameB.playRedAt(4);
+        gameB.playBlueAt(1);
+        gameB.playRedAt(2);
+        gameB.playBlueAt(3);
+        gameB.playRedAt(4);
+        gameB.playBlueAt(1);
+        gameB.playRedAt(0);
+        gameB.playBlueAt(3);
+        gameB.playRedAt(2);
+        gameB.playBlueAt(0);
+        gameB.playRedAt(4);
+        gameB.playBlueAt(2);
+        gameB.playRedAt(1);
+        gameB.playBlueAt(4);
+        gameB.playRedAt(3);
+        assertTrue(gameB.finished());
+    }
+
+    @Test
+    public void DrawGameC(){
+        gameC.playRedAt(0);
+        gameC.playBlueAt(1);
+        gameC.playRedAt(3);
+        gameC.playBlueAt(2);
+        gameC.playRedAt(4);
+        gameC.playBlueAt(5);
+        gameC.playRedAt(2);
+        gameC.playBlueAt(6);
+        gameC.playRedAt(4);
+        gameC.playBlueAt(0);
+        gameC.playRedAt(5);
+        gameC.playBlueAt(1);
+        gameC.playRedAt(2);
+        gameC.playBlueAt(6);
+        gameC.playRedAt(5);
+        gameC.playBlueAt(3);
+        gameC.playRedAt(6);
+        gameC.playBlueAt(0);
+        gameC.playRedAt(0);
+        gameC.playBlueAt(1);
+        gameC.playRedAt(1);
+        gameC.playBlueAt(3);
+        gameC.playRedAt(2);
+        gameC.playBlueAt(4);
+        gameC.playRedAt(5);
+        gameC.playBlueAt(3);
+        gameC.playRedAt(0);
+        gameC.playBlueAt(4);
+        gameC.playRedAt(1);
+        gameC.playBlueAt(6);
+        gameC.playRedAt(3);
+        gameC.playBlueAt(2);
+        gameC.playRedAt(4);
+        gameC.playBlueAt(5);
+        gameC.playRedAt(6);
+        gameC.playBlueAt(3);
+        gameC.playRedAt(0);
+        gameC.playBlueAt(4);
+        gameC.playRedAt(1);
+        gameC.playBlueAt(5);
+        gameC.playRedAt(6);
+        gameC.playBlueAt(2);
+        gameC.playRedAt(3);
+        assertTrue(gameC.finished());
+    }
+
+    @Test
     public void testRedCantPlayTwoTimesInARowInGameC() {
         gameC.playRedAt(0);
         assertFalse(gameC.playRedAt(0));
@@ -293,5 +376,6 @@ public class LineTest {
         assertTrue(gameA.finished());
         assertFalse(gameA.playRedAt(0));
     }
+
 }
 
