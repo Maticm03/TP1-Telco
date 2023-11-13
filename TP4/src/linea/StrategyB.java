@@ -23,4 +23,7 @@ public class StrategyB extends WinStrategy {
 
 	    return topLeftToBottomRight || topRightToBottomLeft;
 	}
+	public char getVariant() {
+		return 'B';
+	}
 }

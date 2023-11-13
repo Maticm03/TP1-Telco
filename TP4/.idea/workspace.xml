@@ -7,6 +7,12 @@
     <list default="true" id="a9b47dcd-b139-4e9b-a4ae-cfb89380d3c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TP4/linea/Line.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP4/linea/Line.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP4/linea/WinStrategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TP4/linea/WinStrategy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/linea/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/Line.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/linea/StrategyA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/StrategyA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/linea/StrategyB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/StrategyB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/linea/StrategyC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/StrategyC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/linea/WinStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/linea/WinStrategy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

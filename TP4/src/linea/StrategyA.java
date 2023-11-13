@@ -22,4 +22,7 @@ public class StrategyA extends WinStrategy {
 							.anyMatch(j -> IntStream.range(0, requiredMatches)
 									.allMatch(k -> line.getBoard().get(i + k).get(j) == player)));
 		}
+	public char getVariant() {
+		return 'A';
+	}
 }

@@ -1,5 +1,6 @@
 package linea;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -31,29 +32,11 @@ public class Line {
 
 
     public boolean playRedAt(int column) {
-        if (gameState.isFinished()) {
-            return false;
-        }
-
-        boolean moveSuccess = playAt(column, 'R');
-        if (moveSuccess) {
-            gameState = gameState.nextTurn();
-        }
-
-        return moveSuccess;
+        return !gameState.isFinished()&&playAt(column, 'R')&&(gameState=gameState.nextTurn())!= null;
     }
 
     public boolean playBlueAt(int column) {
-        if (gameState.isFinished()) {
-            return false;
-        }
-
-        boolean moveSuccess = playAt(column, 'B');
-        if (moveSuccess) {
-            gameState = gameState.nextTurn();
-        }
-
-        return moveSuccess;
+        return !gameState.isFinished()&&playAt(column, 'B')&&(gameState=gameState.nextTurn())!= null;
     }
 
 
@@ -129,18 +112,10 @@ public class Line {
 
 
     private void setWinStrategy(char winVariant) {
-	        switch (winVariant) {
-	            case 'A':
-	                winStrategy = new StrategyA();
-	                break;
-	            case 'B':
-	                winStrategy = new StrategyB();
-	                break;
-	            case 'C':
-	                winStrategy = new StrategyC();
-	                break;
-	            default:
-	                throw new IllegalArgumentException("Invalid win variant: " + winVariant);
-	        }
+	        List<WinStrategy> strategies = Arrays.asList(new StrategyA(), new StrategyB(), new StrategyC());
+            winStrategy = strategies.stream()
+                    .filter(strategy -> strategy.getVariant() == winVariant)
+                    .findFirst()
+                    .orElseThrow(() -> new IllegalArgumentException("Invalid win variant" + winVariant));
 	    }
 }
