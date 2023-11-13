@@ -32,7 +32,11 @@ public class LineTest {
             gameC.show()
         );
     }
-
+	
+    @Test
+    public void testGameIsntFishiedWhenInicialized() {
+    assertFalse(gameC.finished();
+	    
     @Test
     public void testRedPlayAt() {
         gameC.playRedAt(0);
@@ -227,16 +231,41 @@ public class LineTest {
     }
 
     @Test
-    public void testRedCantPlayTwoTimesInARow() {
+    public void testRedCantPlayTwoTimesInARowInGameC() {
         gameC.playRedAt(0);
         assertFalse(gameC.playRedAt(0));
     }
 
     @Test
-    public void testBlueCantPlayTwoTimesInARow() {
+    public void testBlueCantPlayTwoTimesInARowInGameC() {
         gameC.playRedAt(0);
         gameC.playBlueAt(0);
         assertFalse(gameC.playBlueAt(0));
+    }
+	 @Test
+    public void testRedCantPlayTwoTimesInARowInGameB() {
+        gameB.playRedAt(1);
+        assertFalse(gameB.playRedAt(1));
+    }
+
+    @Test
+    public void testBlueCantPlayTwoTimesInARowInGameB() {
+        gameB.playRedAt(1);
+        gameB.playBlueAt(1);
+        assertFalse(gameB.playBlueAt(1));
+    }
+    
+    @Test
+    public void testRedCantPlayTwoTimesInARowInGameA() {
+        gameA.playRedAt(2);
+        assertFalse(gameA.playRedAt(2));
+    }
+
+    @Test
+    public void testBlueCantPlayTwoTimesInARowInGameA() {
+        gameA.playRedAt(2);
+        gameA.playBlueAt(2);
+        assertFalse(gameA.playBlueAt(2));
     }
 
     @Test
